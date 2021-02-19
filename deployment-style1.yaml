@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: golang-test
+  labels:
+    app: golang-test
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: golang-test
+  template:
+    metadata:
+      labels:
+        app: golang-test
+    spec:
+      containers:
+        - name: golang-test
+          image: rootduck/golang-test:1.0.0
+          env:
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: style1-configMap
+                  key: db_host
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: style1-configMap
+                  key: db_name
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: style1-secret
+                  key: db_user
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: style1-secret
+                  key: db_password
