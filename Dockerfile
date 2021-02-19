@@ -16,6 +16,9 @@ WORKDIR /app
 # Copy go mod and sum files 
 COPY go.mod go.sum ./
 
+# Copy go mod and sum files 
+COPY .env.example ./.env
+
 # RUN go mod tidy
 
 # Download all dependencies. Dependencies will be cached if the go.mod and the go.sum files are not changed 

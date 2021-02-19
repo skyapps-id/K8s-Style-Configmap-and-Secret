@@ -19,6 +19,6 @@ spec:
           image: rootduck/golang-test:1.0.0
           envFrom:
             - configMapRef:
-                name: style2-configMap
+                name: style2-configmap
             - configSecret:
                 name: style2-secret
