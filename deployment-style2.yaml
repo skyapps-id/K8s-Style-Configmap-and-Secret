@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: golang-test
-          image: rootduck/golang-test:1.0.0
+          image: rootduck/golang-test:1.0.3
           envFrom:
             - configMapRef:
                 name: style2-configmap
