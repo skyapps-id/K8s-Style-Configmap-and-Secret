@@ -20,5 +20,3 @@ spec:
           envFrom:
             - configMapRef:
                 name: style2-configmap
-            - configSecret:
-                name: style2-secret
