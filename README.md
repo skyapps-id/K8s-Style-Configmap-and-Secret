@@ -37,7 +37,7 @@
     golang-test-59c66dccf9-st2l8   1/1     Running   0          62s
     golang-test-59c66dccf9-zkswh   1/1     Running   0          62s
 
-    $ kubectl logs golang-test-798fbf86cf-nf48p
+    $ kubectl logs golang-test-59c66dccf9-q6dq7
     Database Host :  localhost_style1
     Database Name :  fullstack_api_style1
     Database User :  username_style1
