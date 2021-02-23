@@ -70,9 +70,50 @@
     Database Password :  password_style2
     Listening to port 8080
     ```
-4. Environment by mountVolume.
-   
-   Next Chapter ....
+4. Environment by from file to volume mount.
+   ```sh
+    $ cd  K8s-Style-Configmap-and-Secret/
+    $ cp .env.example .env
+
+    $ kubectl create configmap style3-configmap --from-file=.env
+    configmap/style3-configmap created
+
+    $ kubectl describe cm style3-configmap
+    Name:         style3-configmap
+    Namespace:    default
+    Labels:       <none>
+    Annotations:  <none>
+
+    Data
+    ====
+    .env:
+    ----
+    DB_HOST=localhost3
+    DB_NAME=fullstack_api3
+    DB_USER=username3
+    DB_PASSWORD=password3
+
+    Events:  <none>
+    ```
+
+    Testing environment on project Go
+    ```sh
+    $ kubectl apply -f deployment-style3.yaml
+    deployment.apps/golang-test created
+
+    $ kubectl get pods
+    NAME                           READY   STATUS    RESTARTS   AGE
+    golang-test-586f5978d4-4ffhf   1/1     Running   0          59s
+    golang-test-586f5978d4-bzvx5   1/1     Running   0          55s
+    golang-test-586f5978d4-stppc   1/1     Running   0          57s
+
+    $ kubectl logs golang-test-586f5978d4-4ffhf
+    Database Host :  localhost3
+    Database Name :  fullstack_api3
+    Database User :  username3
+    Database Password :  password3
+    Listening to port 8080
+    ```
 
 ### Licence
 

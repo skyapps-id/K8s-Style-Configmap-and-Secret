@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: golang-test
+  labels:
+    app: golang-test
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: golang-test
+  template:
+    metadata:
+      labels:
+        app: golang-test
+    spec:
+      containers:
+        - name: golang-test
+          image: rootduck/golang-test:1.0.3
+          volumeMounts:
+            - name: config-volume
+              mountPath: /app/.env
+              subPath: .env
+      volumes:
+        - name: config-volume
+          configMap:
+            name: style3-configmap
